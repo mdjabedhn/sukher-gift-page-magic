@@ -20,10 +20,16 @@ const WhyNeedSection = () => {
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-foreground">
-          প্রয়োজন কেন?
-        </h2>
-        <p className="text-center text-muted-foreground mb-12">Why You Need This</p>
+        <div className="relative mb-12 text-center">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <span className="text-[120px] md:text-[180px] font-bold text-muted opacity-5 select-none">
+              WHY NEED
+            </span>
+          </div>
+          <h2 className="relative text-3xl md:text-5xl font-bold bg-gradient-to-r from-primary via-red-500 to-primary bg-clip-text text-transparent">
+            প্রয়োজন কেন?
+          </h2>
+        </div>
         
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {reasons.map((reason, index) => (

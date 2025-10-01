@@ -23,10 +23,16 @@ const WhyChooseSection = () => {
   return (
     <section className="py-16 md:py-24 gradient-soft">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-foreground">
-          কেন নেবেন?
-        </h2>
-        <p className="text-center text-muted-foreground mb-12">Why Choose This Gift</p>
+        <div className="relative mb-12 text-center">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <span className="text-[120px] md:text-[180px] font-bold text-muted opacity-5 select-none">
+              WHY CHOOSE
+            </span>
+          </div>
+          <h2 className="relative text-3xl md:text-5xl font-bold bg-gradient-to-r from-primary via-red-500 to-primary bg-clip-text text-transparent">
+            কেন নেবেন?
+          </h2>
+        </div>
         
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           <div className="order-2 md:order-1">

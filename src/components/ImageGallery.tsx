@@ -1,33 +1,31 @@
-import { useState } from "react";
 import product1 from "@/assets/product-1.jpg";
 import product2 from "@/assets/product-2.jpg";
 import product3 from "@/assets/product-3.jpg";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import product4 from "@/assets/product-4.jpg";
+import product5 from "@/assets/product-5.jpg";
+import product6 from "@/assets/product-6.jpg";
 
 const ImageGallery = () => {
-  const images = [product1, product2, product3];
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
+  const images = [
+    { src: product1, alt: "Red ring gift box with white interior" },
+    { src: product2, alt: "Elegant ring box packaging" },
+    { src: product3, alt: "Premium ring gift box design" },
+    { src: product4, alt: "Opened ring box showing cushion" },
+    { src: product5, alt: "Heart shaped ring gift box" },
+    { src: product6, alt: "LED illuminated ring box" },
+  ];
 
   return (
     <section className="py-16 md:py-24 bg-white relative overflow-hidden">
       {/* Floating hearts */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(3)].map((_, i) => (
+        {[...Array(5)].map((_, i) => (
           <div
             key={i}
             className="absolute text-2xl animate-float-heart opacity-30"
             style={{
-              left: `${30 + i * 30}%`,
-              top: `${20 + i * 20}%`,
+              left: `${20 + i * 20}%`,
+              top: `${15 + i * 15}%`,
               animationDelay: `${i * 1.2}s`,
             }}
           >
@@ -37,50 +35,50 @@ const ImageGallery = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-foreground">
-          ছবির গ্যালারি
-        </h2>
-        <p className="text-center text-muted-foreground mb-12">Gallery</p>
-        
-        <div className="max-w-3xl mx-auto relative">
-          <div className="relative aspect-square rounded-2xl overflow-hidden shadow-float">
-            <img 
-              src={images[currentIndex]} 
-              alt={`Product view ${currentIndex + 1}`}
-              className="w-full h-full object-cover"
-            />
+        <div className="relative mb-12 text-center">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <span className="text-[120px] md:text-[180px] font-bold text-muted opacity-5 select-none">
+              GALLERY
+            </span>
           </div>
+          <h2 className="relative text-3xl md:text-5xl font-bold bg-gradient-to-r from-primary via-red-500 to-primary bg-clip-text text-transparent">
+            ছবির গ্যালারি
+          </h2>
+        </div>
+        
+        <div className="max-w-6xl mx-auto">
+          <p className="text-center text-lg mb-8 text-muted-foreground">
+            আমাদের প্রিমিয়াম রিং বক্সের সংগ্রহ দেখুন - প্রতিটি মুহূর্তকে বিশেষ করে তুলতে ডিজাইন করা হয়েছে। 
+            উচ্চমানের উপকরণ এবং আকর্ষণীয় প্যাকেজিং যা আপনার প্রিয়জনকে মুগ্ধ করবে।
+          </p>
           
-          <Button
-            variant="secondary"
-            size="icon"
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full shadow-lg"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </Button>
-          
-          <Button
-            variant="secondary"
-            size="icon"
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full shadow-lg"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </Button>
-          
-          <div className="flex justify-center gap-2 mt-6">
-            {images.map((_, index) => (
-              <button
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+            {images.map((image, index) => (
+              <div
                 key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  index === currentIndex 
-                    ? "bg-primary w-8" 
-                    : "bg-muted"
-                }`}
-              />
+                className="group relative aspect-square rounded-xl overflow-hidden shadow-float hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              >
+                <img 
+                  src={image.src} 
+                  alt={image.alt}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 right-4 text-white text-sm font-medium">
+                    {image.alt}
+                  </div>
+                </div>
+              </div>
             ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-muted-foreground mb-4">
+              ✨ সব বক্স হাতে তৈরি এবং যত্ন সহকারে প্যাক করা হয় ✨
+            </p>
+            <p className="text-sm text-muted-foreground">
+              প্রতিটি বক্স বিশেষ মুহূর্তের জন্য উপযুক্ত - বাগদান, বিবাহ বার্ষিকী, ভালোবাসা দিবস বা যেকোনো রোমান্টিক উপলক্ষ
+            </p>
           </div>
         </div>
       </div>
